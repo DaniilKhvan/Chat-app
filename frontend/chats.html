@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Chat App — Chats</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+      .messages-area { height: 60vh; overflow:auto; padding: 1rem; background:#fff; border-radius:.5rem; }
+      .message { padding:.5rem .75rem; border-radius:.5rem; margin-bottom:.5rem; max-width:75%; display:inline-block; }
+      .message.me { background:#e9f5ff; align-self:flex-end; }
+      .message.their { background:#f1f1f1; align-self:flex-start; }
+      .messages-list { display:flex; flex-direction:column; gap:.25rem; }
+      .msg-meta { font-size:.75rem; color:#6c757d; }
+      .reactions { display:flex; gap:.5rem; margin-top:.375rem; flex-wrap:wrap; }
+      .reaction-badge { cursor:pointer; padding:.15rem .4rem; border-radius:999px; font-size:.85rem; background:#f0f0f0; }
+      .reaction-badge.react-active { background:#d1e7dd; }
+      .message-controls { display:flex; gap:.5rem; align-items:center; margin-left:.5rem; }
+      .msg-row { display:flex; justify-content:space-between; align-items:flex-start; gap:.5rem; }
+      .message-input { resize:none; }
+    </style>
+  </head>
+  <body class="bg-light">
+    <nav class="navbar navbar-expand bg-white shadow-sm">
+      <div class="container">
+        <span class="navbar-brand mb-0 h4">Chat App</span>
+        <div class="d-flex gap-2">
+          <button id="myProfileBtn" class="btn btn-outline-info">My Profile</button>
+          <button id="newChatBtn" class="btn btn-sm btn-primary">New chat</button>
+          <button id="contactsPageBtn" class="btn btn-sm btn-outline-primary">Add contacts</button>
+          <button id="logoutBtn" class="btn btn-sm btn-outline-secondary">Logout</button>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container py-4">
+      <div class="row">
+        <div class="col-12 col-lg-4 mb-4">
+          <div class="card">
+            <div class="card-body">
+              <div class="d-flex mb-3">
+                <input id="searchInput" class="form-control form-control-sm" placeholder="Search chats or contacts">
+              </div>
+              <ul id="chatsList" class="list-group list-group-flush" style="max-height:68vh; overflow:auto;">
+              </ul>
+              <div id="chatsEmpty" class="text-center text-muted small py-4 d-none">No chats yet. Create a new chat.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-lg-8">
+          <div id="previewCard" class="card h-100">
+            <div id="chatHeader" class="card-header d-none">
+              <div class="d-flex justify-content-between align-items-center">
+                <div>
+                  <h6 id="chatTitle" class="mb-0">Chat</h6>
+                  <small id="chatSubtitle" class="text-muted">participants</small>
+                </div>
+                <div>
+                  <button id="deleteChatBtn" class="btn btn-sm btn-outline-danger me-2">Delete chat</button>
+                  <button id="refreshChatBtn" class="btn btn-sm btn-outline-secondary">Refresh</button>
+                </div>
+              </div>
+            </div>
+
+            <div id="chatBody" class="card-body d-flex flex-column">
+              <div id="messagesContainer" class="messages-area d-flex flex-column">
+                <div id="emptyPreview" class="text-center text-muted w-100 align-self-center">
+                  <h5 class="mb-1">Select a chat</h5>
+                  <div class="small">Or create a new chat with one of your contacts.</div>
+                </div>
+                <div id="messagesList" class="messages-list mt-2 w-100"></div>
+              </div>
+
+              <div id="messageActions" class="mt-3 d-none">
+                <div class="d-flex gap-2 align-items-stretch">
+                  <textarea id="messageInput" class="form-control message-input" rows="2" placeholder="Type a message..."></textarea>
+                  <button id="sendMsgBtn" class="btn btn-primary">Send</button>
+                </div>
+                <div class="mt-2 small text-muted">
+                  Tip: double-click a message to edit it 
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Small emoji picker -->
+    <div id="emojiPicker" style="display:none; position:fixed; z-index:9999; background:white; border:1px solid #ddd; padding:.5rem; border-radius:.5rem;">
+      <div style="display:flex; gap:.25rem; flex-wrap:wrap;">
+        <button class="btn btn-sm btn-light emojiBtn">👍</button>
+        <button class="btn btn-sm btn-light emojiBtn">❤️</button>
+        <button class="btn btn-sm btn-light emojiBtn">😂</button>
+        <button class="btn btn-sm btn-light emojiBtn">🔥</button>
+        <button class="btn btn-sm btn-light emojiBtn">😮</button>
+        <button class="btn btn-sm btn-light emojiBtn">🎉</button>
+        <button class="btn btn-sm btn-light emojiBtn">❌</button>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/chats.js"></script>
+    <script>
+      document.getElementById('contactsPageBtn')?.addEventListener('click', () => {
+        window.location.href = '/contacts.html';
+      });
+      document.getElementById('myProfileBtn').addEventListener('click', () => {
+        window.location.href = '/profile.html';
+      });
+    </script>
+  </body>
+</html>
