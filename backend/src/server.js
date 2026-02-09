@@ -3,17 +3,17 @@ const app = require('./app');
 const connectDB = require('./config/db');
 const { createAdminIfMissing } = require('./scripts/createAdmin');
 const PORT = process.env.PORT || 3000;
-const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/chat-app';
 
 (async () => {
-  await connectDB(MONGO_URI);
+  await connectDB(); 
+  
   try {
     await createAdminIfMissing();
   } catch (e) {
     console.error('Admin creation error:', e);
   }
 
-  app.listen(PORT, () => {
-    console.log(`Server listening on http://localhost:${PORT}`);
+  app.listen(PORT, '0.0.0.0', () => {  
+    console.log(`✅ Server running on port ${PORT}`);
   });
 })();
