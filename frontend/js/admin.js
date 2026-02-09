@@ -1,4 +1,4 @@
-const API_BASE = 'http://localhost:3000/api';
+const API_BASE = CONFIG.API_BASE;
 
 function authHeader() {
   const t = localStorage.getItem('chat_token');

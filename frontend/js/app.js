@@ -1,4 +1,4 @@
-const API_BASE = 'http://localhost:3000/api';
+const API_BASE = CONFIG.API_BASE;;
 
 function showAlert(el, msg, type='danger'){
   el.className = `alert alert-${type}`;
