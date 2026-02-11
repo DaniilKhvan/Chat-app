@@ -30,10 +30,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Aisultan0419/chat-app.git"
+    "url": "git+https://github.com/DaniilKhvan/Chat-app.git"
   },
   "bugs": {
-    "url": "https://github.com/Aisultan0419/chat-app/issues"
+    "url": "https://github.com/DaniilKhvan/Chat-app/issues"
   },
-  "homepage": "https://github.com/Aisultan0419/chat-app#readme"
+  "homepage": "https://github.com/DaniilKhvan/Chat-app#readme"
 }

@@ -274,4 +274,4 @@ Daniil Khan, Gulnaz Duiseman
 
 ## 🔗 Links
 - [GitHub Repository](https://github.com/DaniilKhvan/Chat-app.git)
-- [Live Demo](https://your-app.up.railway.app)
+- [Live Demo](chat-app-production-8173.up.railway.app)
